@@ -11,14 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 import jpabook.jpashop.domain.Member;
 
 @SpringBootTest
-public class MemberRepositoryTest {
+public class MemberRepository2Test {
 
 	@Autowired
-	MemberRepository memberRepository;
+	MemberRepository2 memberRepository;
 	
 	@Test
 	@Transactional
-	@Rollback(false)
+	//@Rollback(false)
 	public void testMember() throws Exception {
 		//given
 		Member member = new Member();

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -35,13 +36,18 @@ public class Category {
 		inverseJoinColumns = @JoinColumn(name="item_id"))
 	private List<Item> items = new ArrayList<>();
 	
-	@ManyToOne // 내 부모 - 계층구조 설정
+	@ManyToOne(fetch = FetchType.LAZY) // 내 부모 - 계층구조 설정
 	@JoinColumn(name="parent_id")
 	private Category parent;
 	
 	@OneToMany(mappedBy = "parent") // 내 부모 - 계층구조 설정
 	private List<Category> child = new ArrayList<Category>();
 	
+	// 연관관계 메서드 (양방향 관계일때)
+	public void addChildCategory(Category child) {
+		this.child.add(child);
+		child.setParent(this);
+	}
 	
 
 }

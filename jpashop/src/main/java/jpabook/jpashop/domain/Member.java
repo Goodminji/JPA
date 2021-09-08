@@ -28,5 +28,5 @@ public class Member {
 	private Address adress;
 	
 	@OneToMany(mappedBy = "member") // order 테이블에 있는 member 필드에 의해서 매핑이 된거다.(읽기전용)
-	private List<Order> orders = new ArrayList<>();
+	private List<Order> orders = new ArrayList<>(); // 여기서 초기화하면 null 오류가 날 경우가 없다.
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import jpabook.jpashop.domain.Member;
 
 @Repository
-public class MemberRepository {
+public class MemberRepository2 {
 	
 	@PersistenceContext // 영속성 컨텍스트(Persistence Context)
 	private EntityManager em; // 엔티티 매니저는 엔티티를 영속성 컨테스트에 보관하고 관리합니다.
