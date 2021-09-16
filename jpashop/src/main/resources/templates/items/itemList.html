@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head ><!-- th:replace="fragments/header :: header" -->
+	<meta charset="UTF-8" http-equiv="Content-Type">
+	<meta name="viewpoint" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+	
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	
+	<link href="/css/jumbotron-narrow.css" rel="stylesheet">
+	<title>Hello</title>
+</head>
+<body>
+
+<div class="container">
+	
+	<!--<div  /> th:replace="fragments/bodyHeader :: bodyHeader"  -->
+	<ul class="nav nav-pills pull-right">
+		<li><a href="/">Home</a></li>
+	</ul>
+	<a href="/"> <h3 class="text-muted">Hello shop</h3> </a>
+	
+	<div>
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th>#</th>
+				<th>상품 이름</th>
+				<th>상품 가격</th>
+				<th>상품 수량</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="item : ${items}">
+				<td th:text="${item.id}"></td>
+				<td th:text="${item.name}"></td>
+				<td th:text="${item.price}"></td>
+				<td th:text="${item.stockQuantity}"></td>
+			    <td>
+			    	<a href="#" th:href="@{/items/{id}/edit (id=${item.id})}" class="btn btn-primary" role="button">수정</a>
+			    </td>
+			</tr>
+			</tbody>
+		
+		</table>
+
+	</div>
+	<!--<div />th:replace="fragments/footer :: footer"   -->
+	
+</div>
+
+</body>
+</html>

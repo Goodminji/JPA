@@ -35,7 +35,7 @@ public class OrderService {
 		
 		//硅价 沥焊 积己
 		Delivery delivery = new Delivery();
-		delivery.setAddress(member.getAdress());
+		delivery.setAddress(member.getAddress());
 		
 		//林巩惑前积己
 		OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);

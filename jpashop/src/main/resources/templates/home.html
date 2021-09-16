@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head ><!-- th:replace="fragments/header :: header" -->
+	<meta charset="UTF-8" http-equiv="Content-Type">
+	<meta name="viewpoint" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+	
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	
+	<link href="/css/jumbotron-narrow.css" rel="stylesheet">
+	<title>Hello</title>
+</head>
+
+<style>
+	.fieldError{
+		border-color:#bd2130;
+	}
+</style>
+<body>
+
+<div class="container">
+	
+	<!--<div  /> th:replace="fragments/bodyHeader :: bodyHeader"  -->
+	<ul class="nav nav-pills pull-right">
+		<li><a href="/">Home</a></li>
+	</ul>
+	<a href="/"> <h3 class="text-muted">Hello shop</h3> </a>
+	
+	<div class="jumbotron">
+		<h1>Hello shop</h1>
+		<p class="lead">회원 기능</p>
+		<p>
+			<a class="btn btn-lg btn-secondary" href="/members/new">회원가입</a>
+			<a class="btn btn-lg btn-secondary" href="/members">회원목록</a>
+		</p>
+		<p class="lead">상품 기능</p>
+		<p>
+			<a class="btn btn-lg btn-dark" href="/items/new">상품 등록</a>
+			<a class="btn btn-lg btn-dark" href="/items">상품 목록</a>
+		</p>
+		<p class="lead">주문 기능</p>
+		<p>
+			<a class="btn btn-lg btn-info" href="/order">상품 주문</a>
+			<a class="btn btn-lg btn-info" href="/orders">주문 내역</a>
+		</p>
+	</div>
+	
+	
+	<!--<div />th:replace="fragments/footer :: footer"   -->
+	
+</div>
+
+</body>
+</html>

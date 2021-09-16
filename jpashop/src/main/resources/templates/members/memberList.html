@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head ><!-- th:replace="fragments/header :: header" -->
+	<meta charset="UTF-8" http-equiv="Content-Type">
+	<meta name="viewpoint" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+	
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	
+	<link href="/css/jumbotron-narrow.css" rel="stylesheet">
+	<title>Hello</title>
+</head>
+<body>
+
+<div class="container">
+	
+	<!--<div  /> th:replace="fragments/bodyHeader :: bodyHeader"  -->
+	<ul class="nav nav-pills pull-right">
+		<li><a href="/">Home</a></li>
+	</ul>
+	<a href="/"> <h3 class="text-muted">Hello shop</h3> </a>
+	
+	<div>
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th>#</th>
+				<th>이름</th>
+				<th>도시</th>
+				<th>주소</th>
+				<th>우편번호</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="member : ${members}">
+				<td th:text="${member.id}"></td>
+				<td th:text="${member.name}"></td>
+				<td th:text="${member.address?.city}"></td><!-- ?는 address가 null이면 city를 안찍다는 뜻이다. -->
+				<td th:text="${member.address?.street}"></td>
+				<td th:text="${member.address?.zipcode}"></td>
+			
+			</tr>
+			</tbody>
+		
+		</table>
+
+	</div>
+	<!--<div />th:replace="fragments/footer :: footer"   -->
+	
+</div>
+
+</body>
+</html>
