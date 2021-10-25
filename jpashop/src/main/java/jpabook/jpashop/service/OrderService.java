@@ -13,6 +13,7 @@ import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import jpabook.jpashop.repository.MemberRepository;
 import jpabook.jpashop.repository.OrderRepository;
+import jpabook.jpashop.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -29,7 +30,7 @@ public class OrderService {
 	@Transactional
 	public Long order(Long memberId, Long itemId,int count) {
 		
-		//엔티티 조회
+		//엔티티 조회(영속상태)
 		Member member = memberRepository.findOne(memberId);
 		Item item = itemRepository.findOne(itemId);
 		
@@ -60,9 +61,10 @@ public class OrderService {
 	}
 	
 	//검색
-	/*
-	 * public List<Order> findOrders(){
-	 * 
-	 * }
-	 */
+	
+	public List<Order> findOrders(OrderSearch orderSearch){
+		return orderRepository.findAllByString(orderSearch);
+	 
+	}
+	 
 }

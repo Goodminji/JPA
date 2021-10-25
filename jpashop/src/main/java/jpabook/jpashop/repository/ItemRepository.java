@@ -19,7 +19,8 @@ public class ItemRepository {
 		if(item.getId() == null) {
 			em.persist(item);//insert
 		}else {
-			em.merge(item);//update
+			em.merge(item);//update 모든 데이터를 update 하고 만약 null이어도 null로 업데이트 - 사용 주의요망
+			               //merge 보다 변경감지로 사용하는게 좋음(ItemService.upteItem 변경감지 사용이 더 좋음)
 		}
 	}
 

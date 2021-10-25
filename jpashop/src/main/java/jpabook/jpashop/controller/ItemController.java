@@ -71,7 +71,7 @@ public class ItemController {
 	public String updateItem(@PathVariable("itemId") Long itemId, @ModelAttribute("form") Book form) {
 	
 		// 준영속 엔티티
-		Book book = new Book();
+		/*Book book = new Book();
 		
 		book.setId(form.getId());
 		book.setName(form.getName());
@@ -81,9 +81,9 @@ public class ItemController {
 		book.setIsbn(form.getIsbn());
 		
 		itemService.saveItem(book);
-		
-		//영속성때문에 서비스 계층에서 update 되도록 하는게 좋음 
-		//itemService.upteItem(itemId, form.getName(),form.getPrice() , form.getStockQuantity());
+		*/
+		//영속성때문에 서비스 계층에서 update 되도록 하는게 좋음(아래 사용 코드가 좋음)
+		itemService.upteItem(itemId, form.getName(),form.getPrice() , form.getStockQuantity());
 		return "redirect:/items";
 	}
 }

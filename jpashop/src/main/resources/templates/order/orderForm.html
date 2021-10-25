@@ -32,7 +32,7 @@
 		
 		<div class="form-group">
 			<label for="item">상품명</label>
-			<select name="itemrId" id = "item" class="form-control">
+			<select name="itemId" id = "item" class="form-control">
 				<option value="">상품선택</option>
 				<option th:each="item: ${items}"
 						th:value="${item.id}"

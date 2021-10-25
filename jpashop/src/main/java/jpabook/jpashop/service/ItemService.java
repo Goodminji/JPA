@@ -19,7 +19,7 @@ public class ItemService {
 	
 	@Transactional
 	public void saveItem(Item item) {
-		itemRepository.save(item);
+		itemRepository.save(item);// merge사용보다는 ItemService.upteItem 변경감지 사용이 더 좋음
 	}
 	
 	
@@ -27,6 +27,7 @@ public class ItemService {
 	public void upteItem(Long itemId, String name, int price , int stockQuantity) { // 서비스 계층에서 필요한 파라미터 나 DTO 로 만들어서 Update 하는게 좋음
 		// Item findItem는 영속상태이므로 @Transactional로 인해서 update commit한다(변경감지)
 		Item findItem = itemRepository.findOne(itemId);
+		//findItem.change(price,name,stockQunitity) 메소드를 따로 만들어서 사용하는게 더 좋음
 		findItem.setPrice(price);
 		findItem.setName(name);
 		findItem.setStockQuantity(stockQuantity);
