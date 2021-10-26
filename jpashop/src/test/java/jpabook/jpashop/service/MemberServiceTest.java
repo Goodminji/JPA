@@ -47,7 +47,10 @@ public class MemberServiceTest {
 		Long saveId = memberService.join(member); 
 		
 		//then
-		em.flush(); 
+		em.flush(); /*쌓여있는 쿼리들을 DB에 보내는 동작이 flush() 이다.
+ 			flush() 는 1차캐시를 지우지는 않는다. 쿼리들을 DB에 날려서 DB와 싱크를 맞추는 역할을 한다.
+		 */
+		
 		/*
 		 * 영속성에 있는것을 데이터 베이스에 반영하는 것이므로 RollBack(false)로 설정 하지 않아도 insert 쿼리 나감
 		 * 그리고 난 후에 Rollback이 된다.
