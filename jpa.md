@@ -48,8 +48,16 @@ findById()같은 경우는 엔티티를 영속성 컨텍스트에서 먼저 찾�
 * Jpa를 쉽게 사용하기 위해 스프링에서 제공하는 프레임워크
 * 뻔한 코드들의 사용을 줄여주도록하는 인터페이스로 하이버네이트와 같은 JPA provider 필요.
 
+### jpa 동작과정을 설명해주세요(저장할때)
 
+jpa의 경우 트랜잭션 실행 단위안에서 동작한다. 객체를 생성하고 엔티티 매니저에 의해서 생성된 객체를 영속성 컨텍스트에 등록한다. 이때 해당 객체는 영속상태가 된다 즉 1차 캐시에 저장된다는 말. 또한 insert 쿼리는 쓰기지연 SQL저장소에 저장이된다. 트랜잭션이 끝나는 시점에 쓰기 지연 SQL 저장소에 있는 쿼리문들이 flush가 되고 트랜잭션 커밋이 된다.
+
+### jpa 동작과정을 설명해주세요(수정할때) <a href="jpa" id="jpa"></a>
+
+우선 수정할 엔티티를 찾는다. 이때 1차 캐시에 올라가고 영속상태가 된다. 즉 영속성 컨텍스트가 관리하는 상태가 된다. 그리고 set\~\~()으로 데이터를 수정한다. 이때 JPA는 데이터베이스 트랜잭션 커밋 시점에 내부적으로 flush가 되는데 영속성 컨텍스트 기능중 변경감지 기능이 있어서 이 것이 현재 1차 캐시의 엔티티와 최소 1차 캐시에 등록된 상태의 스냅샷과 비교해서 변경내역을 확인하고 update 쿼리를 쓰기지연 저장소에 저장하고 트랜잭션 커밋 끝나기 전에 해당 쿼리를 날리고 커밋을 완료한다.
 
 출처 : [https://velog.io/@adam2/JPA%EB%8A%94-%EB%8F%84%EB%8D%B0%EC%B2%B4-%EB%AD%98%EA%B9%8C-orm-%EC%98%81%EC%86%8D%EC%84%B1-hibernate-spring-data-jpa](https://velog.io/@adam2/JPA%EB%8A%94-%EB%8F%84%EB%8D%B0%EC%B2%B4-%EB%AD%98%EA%B9%8C-orm-%EC%98%81%EC%86%8D%EC%84%B1-hibernate-spring-data-jpa)
 
 [https://eocoding.tistory.com/83](https://eocoding.tistory.com/83)
+
+[https://doorisopen.github.io/developers-library/Interview/2020-06-25-interview-jpa](https://doorisopen.github.io/developers-library/Interview/2020-06-25-interview-jpa)
