@@ -262,7 +262,29 @@ public abstract class Item { //자식엔티티
 
 ```
 
+### CascadeType <a href="h-tag-2" id="h-tag-2"></a>
 
+엔티티의 상태 변화를 전파시키는 옵션이다. OneToMany와 ManyToOne로 양방향 관계를 맺는 엔티티의 상태 변화를 전이시킬 때 사용한다.
+
+```
+CascadeType.ALL
+  - 상위 엔터티에서 하위 엔터티로 모든 작업을 전파
+  
+CascadeType.PERSIST
+  - 하위 엔티티까지 영속성 전달
+  
+CascadeType.MERGE
+  - 하위 엔티티까지 병합 작업을 지속
+
+CascadeType.REMOVE
+ - 하위 엔티티까지 제거 작업을 지
+ 
+ CascadeType.REFRESH
+- 데이터베이스로부터 인스턴스 값을 다시 읽어 오기
+
+CascadeType.DETACH
+- 영속성 컨텍스트에서 엔티티 제거
+```
 
 &#x20;      &#x20;
 
